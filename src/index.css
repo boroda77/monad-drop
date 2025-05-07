@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+.container {
+  background-color: #000;
+  color: #fff;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  font-family: monospace;
+  z-index: 0;
+}
+
+.logo {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+}
+
+.logo-img {
+  width: 180px;
+  max-width: 80vw;
+  height: auto;
+  filter: drop-shadow(0 0 15px #8000ff);
+  animation: shake 0.5s infinite;
+  animation-play-state: running;
+  transition: filter 0.3s ease;
+}
+
+.logo-img:hover {
+  animation-play-state: paused;
+  filter: drop-shadow(0 0 25px #ff00ff);
+}
+
+.flip-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(90%, 600px);
+  height: 400px;
+  transform: translate(-50%, -50%);
+  perspective: 1000px;
+  z-index: 10;
+}
+
+.flip-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background-color: #111;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 30px #8000ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  z-index: 15;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+.typewriter {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid #8000ff;
+  animation: typing 3s steps(20, end) infinite, blink 0.75s step-end infinite;
+  position: relative;
+  z-index: 30; /* Поверх всех слоёв */
+}
+
+button {
+  background-color: #8000ff;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  width: 100%;
+  max-width: 300px;
+  z-index: 20;
+  position: relative;
+}
+
+.footnote {
+  margin-top: 2rem;
+  color: #777;
+  font-size: 0.875rem;
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-1px); }
+  50% { transform: translateX(1px); }
+  75% { transform: translateX(-1px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes typing {
+  0% { width: 0; }
+  50% { width: 100%; }
+  100% { width: 0; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
