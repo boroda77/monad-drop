@@ -6,26 +6,11 @@ export default function MonadDrop() {
   const [currentIndex, setCurrentIndex] = useState(null);
 
   const playlist = [
-    {
-      name: "Ivoxygen Falling",
-      src: "/music/Ivoxygen Falling.mp3",
-    },
-    {
-      name: "Lxst Cxntury Amnesia",
-      src: "/music/Lxst Cxntury Amnesia.mp3",
-    },
-    {
-      name: "lxst-cxntury-odium",
-      src: "/music/lxst-cxntury-odium.mp3",
-    },
-    {
-      name: "HXVRMXN_-_South",
-      src: "/music/HXVRMXN_-_South.mp3",
-    },
-    {
-      name: "Bad Smith - ARTEMIDA",
-      src: "/music/Bad Smith - ARTEMIDA.mp3",
-    },
+    { name: "Ivoxygen Falling", src: "/music/Ivoxygen Falling.mp3" },
+    { name: "Lxst Cxntury Amnesia", src: "/music/Lxst Cxntury Amnesia.mp3" },
+    { name: "lxst-cxntury-odium", src: "/music/lxst-cxntury-odium.mp3" },
+    { name: "HXVRMXN_-_South", src: "/music/HXVRMXN_-_South.mp3" },
+    { name: "Bad Smith - ARTEMIDA", src: "/music/Bad Smith - ARTEMIDA.mp3" },
   ];
 
   const handleClick = () => {
@@ -58,37 +43,13 @@ export default function MonadDrop() {
 
           {/* Back Side */}
           <div className="flip-back">
-            {/* <h1 className="typewriter">🎵 Playlist</h1> */}
-
-            <div
-              style={{
-                marginTop: "1rem",
-                backgroundColor: "#111",
-                padding: "1.5rem",
-                borderRadius: "1rem",
-                // boxShadow: "0 0 20px #8000ff",
-                width: "100%",
-                maxWidth: "500px",
-                marginLeft: "auto",
-                marginRight: "auto",
-                color: "#fff",
-              }}
-            >
-              <ul style={{ listStyle: "none", padding: 0, marginBottom: "1rem" }}>
+            <div className="playlist-box">
+              <ul>
                 {playlist.map((track, index) => (
                   <li
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    style={{
-                      cursor: "pointer",
-                      padding: "0.5rem",
-                      marginBottom: "0.3rem",
-                      backgroundColor: currentIndex === index ? "#2a2a2a" : "#1a1a1a",
-                      // border: "1px solid #8000ff",
-                      borderRadius: "0.5rem",
-                      transition: "all 0.2s ease-in-out",
-                      boxShadow: currentIndex === index ? "0 0 10px #8000ff" : "none",
-                    }}
+                    className={currentIndex === index ? "active" : ""}
                   >
                     {track.name}
                   </li>
@@ -96,27 +57,16 @@ export default function MonadDrop() {
               </ul>
 
               {currentIndex !== null && (
-                <>
-                  {/* <div style={{ marginBottom: "1rem" }}>
-                    🎧 Now playing: {playlist[currentIndex].name}
-                  </div> */}
-                  <audio
-                    controls
-                    autoPlay
-                    src={playlist[currentIndex].src}
-                    onEnded={() => {
-                      setCurrentIndex((currentIndex + 1) % playlist.length);
-                    }}
-                    style={{
-                      width: "100%",
-                      borderRadius: "0.5rem",
-                      marginTop: "0.5rem",
-                    }}
-                  />
-                </>
+                <audio
+                  controls
+                  autoPlay
+                  src={playlist[currentIndex].src}
+                  onEnded={() => {
+                    setCurrentIndex((currentIndex + 1) % playlist.length);
+                  }}
+                />
               )}
             </div>
-
             <p className="footnote">gremlin & crypto</p>
           </div>
         </div>
